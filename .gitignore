@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# capstone data — never commit
+raw/
+chunks/
+*.csv
+*.csv.gz
