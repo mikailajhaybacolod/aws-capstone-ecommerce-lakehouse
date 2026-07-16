@@ -100,7 +100,8 @@ rule_outcomes = SelectFromCollection.apply(
     dfc=dq_results, key="ruleOutcomes", transformation_ctx="rule_outcomes"
 )
 
-df = row_outcomes.toDF()
+# cache = keep the checked rows in memory so the counts below don't re-read everything 3 times
+df = row_outcomes.toDF().cache()
 
 # ---------- 3. split ----------
 
