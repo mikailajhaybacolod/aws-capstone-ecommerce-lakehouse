@@ -15,7 +15,7 @@ from awsglue.context import GlueContext
 from awsglue.job import Job
 from awsglue.transforms import SelectFromCollection
 from awsglue.utils import getResolvedOptions
-from awsglue_dq.dataquality import EvaluateDataQuality
+from awsgluedq.transforms import EvaluateDataQuality
 from pyspark.context import SparkContext
 from pyspark.sql import functions as F
 
