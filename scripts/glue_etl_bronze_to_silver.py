@@ -119,7 +119,7 @@ print(f"reconciles: {passed_count + failed_count == total_count}")
 
 # capstone formula
 health_score = (passed_count / total_count) * 100 if total_count else 0
-print(f"health score: {health_score:.4f}%")
+print(f"health score: {health_score:.6f}%")
 
 # ---------- 4. silver ----------
 
@@ -178,6 +178,6 @@ rule_outcomes_df = (
 )
 print(f"dq results -> {DQ_RESULTS_PATH}")
 
-print(f"=== done: {total_count:,} total / {passed_count:,} passed / {failed_count:,} quarantined / {health_score:.4f}% ===")
+print(f"=== done: {total_count:,} total / {passed_count:,} passed / {failed_count:,} quarantined / {health_score:.6f}% ===")
 
 job.commit()
