@@ -46,6 +46,10 @@ SOURCE_PATH = f"s3://{BUCKET}/01-bronze/ecommerce_data/year={YEAR}/month={MONTH}
 # snappy is splittable, gzip isn't
 spark.conf.set("spark.sql.parquet.compression.codec", "snappy")
 
+# dynamic = overwrite ONLY the partitions this run writes.
+# static (the default) nukes the whole table dir first - it deleted October's silver when I ran November
+spark.conf.set("spark.sql.sources.partitionOverwriteMode", "dynamic")
+
 print(f"=== year={YEAR} month={MONTH} ===")
 
 # ---------- 1. read bronze ----------
