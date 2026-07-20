@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListBucket",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::mikaila-aws-capstone"
+    },
+    {
+      "Sid": "BronzeReadOnly",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mikaila-aws-capstone/01-bronze/*"
+    },
+    {
+      "Sid": "WorkingPrefixesReadWrite",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": [
+        "arn:aws:s3:::mikaila-aws-capstone/02-silver/*",
+        "arn:aws:s3:::mikaila-aws-capstone/03-gold/*",
+        "arn:aws:s3:::mikaila-aws-capstone/04-quarantine/*",
+        "arn:aws:s3:::mikaila-aws-capstone/05-dq-results/*",
+        "arn:aws:s3:::mikaila-aws-capstone/07-glue-assets/*"
+      ]
+    }
+  ]
+}
