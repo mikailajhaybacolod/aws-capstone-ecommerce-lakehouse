@@ -1,0 +1,39 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGoldCatalog",
+      "Effect": "Allow",
+      "Action": ["glue:GetTable","glue:GetTables","glue:GetDatabase","glue:GetPartitions"],
+      "Resource": [
+        "arn:aws:glue:ap-southeast-1:703306584987:catalog",
+        "arn:aws:glue:ap-southeast-1:703306584987:database/mikaila_gold",
+        "arn:aws:glue:ap-southeast-1:703306584987:table/mikaila_gold/*"
+      ]
+    },
+    {
+      "Sid": "AllowGoldData",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject","s3:ListBucket"],
+      "Resource": [
+        "arn:aws:s3:::mikaila-aws-capstone",
+        "arn:aws:s3:::mikaila-aws-capstone/03-gold/*"
+      ]
+    },
+    {
+      "Sid": "DenySilverCatalog",
+      "Effect": "Deny",
+      "Action": "glue:*",
+      "Resource": [
+        "arn:aws:glue:ap-southeast-1:703306584987:database/mikaila_silver",
+        "arn:aws:glue:ap-southeast-1:703306584987:table/mikaila_silver/*"
+      ]
+    },
+    {
+      "Sid": "DenySilverData",
+      "Effect": "Deny",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::mikaila-aws-capstone/02-silver/*"
+    }
+  ]
+}
